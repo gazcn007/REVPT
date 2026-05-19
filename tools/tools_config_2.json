@@ -11,7 +11,7 @@
   },
   {
     "name": "Depth",
-    "path": "Depth-Anything-V2",
+    "path": "Depth-Anything-V3",
     "conda_env": "detect",
     "gpu_ids": "4,5,6,7",
     "port": 9991,

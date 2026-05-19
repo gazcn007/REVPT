@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+python-multipart
+matplotlib
+pillow
+opencv-python
+pydantic
+# install depth-anything-3 separately:
+#   git clone https://github.com/ByteDance-Seed/depth-anything-3.git
+#   cd depth-anything-3 && pip install xformers "torch>=2" torchvision && pip install -e .

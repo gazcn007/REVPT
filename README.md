@@ -27,13 +27,18 @@ pip install transformers==4.42.0 fastapi uvicorn matplotlib opencv-python python
 
 ## Tool services
 
-change config in `tools/tools_config_2.json`
-```bash
-cd Depth-Anything-V2
-mkdir checkpoints
-wget https://huggingface.co/depth-anything/Depth-Anything-V2-Large/resolve/main/depth_anything_v2_vitl.pth?download=true
+Change config in `tools/tools_config_2.json`. The depth tool uses [Depth Anything 3](https://github.com/ByteDance-Seed/depth-anything-3); weights are downloaded automatically from HuggingFace on first inference (default: `depth-anything/DA3MONO-LARGE`). See [tools/Depth-Anything-V3/README.md](tools/Depth-Anything-V3/README.md) for model variants and env-var overrides.
 
-python tools/lanuch_tools.py --config tools_config_2.json
+```bash
+# Install Depth Anything 3
+git clone https://github.com/ByteDance-Seed/depth-anything-3.git
+cd depth-anything-3
+pip install xformers "torch>=2" torchvision
+pip install -e .
+cd -
+
+# Launch tool services
+python tools/lanuch_tools.py --config tools/tools_config_2.json
 ```
 
 ## Train
