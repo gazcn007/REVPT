@@ -54,3 +54,18 @@ All endpoints accept a single image in the `file` form field.
 | POST | `/predict/depth` | Grayscale PNG |
 | POST | `/predict/raw_depth_array` | JSON: `{depth_array, width, height, min_depth, max_depth}` |
 | GET | `/health` | `{status, gpu_count, active_workers, total_workers, model_id}` |
+
+## Standalone video demo
+
+`demo.py` runs DA3 over every frame of a video and saves colorized depth PNGs — no service required, no HTTP. Use it as a smoke test for the DA3 install and as the reference implementation for the `depth_estimation` tool function.
+
+```bash
+# From the repo root, runs over all 72 frames of simulation_0311.mp4
+python tools/Depth-Anything-V3/demo.py simulation_0311.mp4
+
+# Outputs land in depth_outputs/frame_XXXX_depth.png
+```
+
+Options: `--output <dir>`, `--every N` (stride), `--model-id <hf-id>`, `--device {cuda,mps,cpu}`, `--cmap <matplotlib-cmap>`.
+
+The `depth_estimation(image, model)` function in `demo.py` is the actual tool surface — takes a PIL image, returns a PIL colorized depth image.
